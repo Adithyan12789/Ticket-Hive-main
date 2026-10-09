@@ -1,6 +1,3 @@
-// Admin Routes
-
-
 import { Route, Navigate } from 'react-router-dom';
 import AdminLoginPage from '../Features/Admin/AdminLoginPage';
 import AdminDashboard from '../Features/Admin/AdminDashboard';
@@ -14,7 +11,6 @@ import AdminBookingsPage from '../Features/Admin/AdminBookingsPage';
 import BookingDetailsPage from '../Features/Admin/BookingDetailsPage';
 import AdminChatScreen from '../Features/Admin/AdminChatScreen';
 import CastManagement from '../Features/Admin/CastManagement';
-
 
 export const AdminRoutes = (
   <Route path="/admin" element={<AdminPrivateRoute />}>
