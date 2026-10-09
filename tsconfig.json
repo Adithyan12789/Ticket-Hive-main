@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",  // ES6 for modern JavaScript features
+    "module": "commonjs",  // CommonJS for backend (Node.js)
+    "strict": true,  // Enables strict type-checking options
+    "esModuleInterop": true,  // Enable ES module interoperability
+    "skipLibCheck": true,  // Skip type-checking of declaration files to avoid issues with external libraries
+    "forceConsistentCasingInFileNames": true,  // Ensure consistent casing in file names
+    "typeRoots": ["./types", "./node_modules/@types"],  // Custom type roots for custom declarations
+    "resolveJsonModule": true,  // Allows importing JSON files (useful if you need to import JSON)
+    "outDir": "./dist",  // The directory where compiled files will go (optional, but recommended for better structure)
+    "baseUrl": ".",  // Base directory for module resolution
+    "moduleResolution": "node",  // Use Node.js module resolution algorithm
+    "noImplicitAny": true,  // Ensure no variables have an implicit 'any' type
+    "noUnusedLocals": true,  // Ensure no unused local variables
+    "noUnusedParameters": true,  // Ensure no unused function parameters
+    "skipDefaultLibCheck": true,  // Skip type-checking of default library files
+    "jsx": "react"  // Since this is a backend (no React components), setting JSX to 'none' is appropriate
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
