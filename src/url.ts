@@ -1,2 +1,3 @@
-const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-export const backendUrl = isLocal ? "" : "https://ticket-hive-back-end-1.onrender.com";
+// In local dev, VITE_BACKEND_URL is unset → empty string → Vite proxy handles it.
+// In production (Vercel), set VITE_BACKEND_URL to your Render backend URL.
+export const backendUrl = import.meta.env.VITE_BACKEND_URL ?? "https://ticket-hive-back-end-main-1.onrender.com";
