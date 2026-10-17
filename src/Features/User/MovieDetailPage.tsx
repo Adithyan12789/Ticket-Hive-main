@@ -194,8 +194,10 @@ const MovieDetailScreen: React.FC = () => {
   const bannerImage = movie.banners && movie.banners.length > 0
     ? USER_MOVIE_BANNERS + movie.banners[0]
     : movie.images && movie.images.length > 0
-      ? USER_MOVIE_BANNERS + movie.images[0]
-      : "https://placehold.co/1920x800/1a1a1a/ffffff?text=No+Banner+Available";
+      ? `${backendUrl}/MovieImages/${movie.images[0]}`
+      : movie.posters
+        ? `${USER_MOVIE_POSTER}${movie.posters}`
+        : "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop";
 
   return (
     <div className="bg-dark-bg min-h-screen text-white font-sans antialiased overflow-x-hidden selection:bg-primary-500 selection:text-white">
@@ -208,7 +210,16 @@ const MovieDetailScreen: React.FC = () => {
             src={bannerImage}
             alt={movie.title}
             className="w-full h-full object-cover"
-            onError={(e) => { (e.target as HTMLImageElement).src = "https://placehold.co/1920x800/1a1a1a/ffffff?text=No+Banner+Available" }}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              if (movie.images && movie.images.length > 0 && !target.src.includes("/MovieImages/")) {
+                target.src = `${backendUrl}/MovieImages/${movie.images[0]}`;
+              } else if (movie.posters && !target.src.includes("/MoviePosters/")) {
+                target.src = `${USER_MOVIE_POSTER}${movie.posters}`;
+              } else {
+                target.src = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop";
+              }
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/60 to-transparent" />

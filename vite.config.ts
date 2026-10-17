@@ -20,6 +20,7 @@ export default defineConfig({
       '/MoviePosters': { target: "http://localhost:5000/", changeOrigin: true },
       '/MovieBanners': { target: "http://localhost:5000/", changeOrigin: true },
       '/MovieImages': { target: "http://localhost:5000/", changeOrigin: true },
+      '/movieImages': { target: "http://localhost:5000/", changeOrigin: true },
       '/CastsImages': { target: "http://localhost:5000/", changeOrigin: true },
       '/CastImages': { target: "http://localhost:5000/", changeOrigin: true },
       '/UserProfileImages': { target: "http://localhost:5000/", changeOrigin: true },

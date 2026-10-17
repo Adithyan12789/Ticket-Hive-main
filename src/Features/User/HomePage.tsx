@@ -68,9 +68,27 @@ const HomePage: React.FC = () => {
               <div key={movie._id} className="min-w-full h-full relative">
                 <div className="absolute inset-0">
                   <img
-                    src={movie.banners && movie.banners.length > 0 ? BANNERS_BASE_URL + movie.banners[0] : "/default-banner.jpg"}
+                    src={
+                      movie.banners && movie.banners.length > 0
+                        ? BANNERS_BASE_URL + movie.banners[0]
+                        : movie.images && movie.images.length > 0
+                          ? `${backendUrl}/MovieImages/${movie.images[0]}`
+                          : movie.posters
+                            ? `${MOVIE_IMAGES_DIR_PATH}${movie.posters}`
+                            : "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop"
+                    }
                     alt={movie.title}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      if (movie.images && movie.images.length > 0 && !target.src.includes("/MovieImages/")) {
+                        target.src = `${backendUrl}/MovieImages/${movie.images[0]}`;
+                      } else if (movie.posters && !target.src.includes("/MoviePosters/")) {
+                        target.src = `${MOVIE_IMAGES_DIR_PATH}${movie.posters}`;
+                      } else {
+                        target.src = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop";
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/60 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/40 to-transparent" />
