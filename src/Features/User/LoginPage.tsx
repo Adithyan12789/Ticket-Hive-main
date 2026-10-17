@@ -74,7 +74,7 @@ const LoginPage = () => {
 
     try {
       const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...res, _id: "" }));
+      dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (err: any) {
       const errorMessage = err?.data?.message || err?.message || "An error occurred";
