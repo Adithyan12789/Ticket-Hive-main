@@ -54,7 +54,7 @@ const Header: React.FC = () => {
         : "bg-transparent h-24"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+      <div className="px-6 h-full flex justify-between items-center">
         {/* Logo */}
         <Link to="/theater" className="flex items-center gap-3 group relative">
           <div className="absolute inset-0 bg-red-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
